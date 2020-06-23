@@ -1,0 +1,48 @@
+plotheight=8.00
+plotwidth=10.00
+set term epslatex size plotwidth cm, plotheight cm dashed color
+
+set output outfilename
+
+set xrange [0:500]
+set yrange [0:500]
+set cbrange [460:700]
+
+unset xlabel
+set label 1 "\\scalebox{1.5}{$x$ [m]}" at screen 0.74,0.06
+unset ylabel
+set label 2 "\\scalebox{1.5}{$y$ [m]}" at screen 0.04, 0.96 rotate by 0
+
+# set format x "%.1f"
+# set format y "%.1f"
+
+# set xtics 0.2
+# set ytics 0.2
+
+# set mxtics 5
+# set mytics 5
+
+set xtics add ("" 500)
+set ytics add ("" 500)
+
+set xtics nomirror
+
+# set key at graph 0.43,0.95
+
+set bmargin 2.3 
+set tmargin 0.5
+set lmargin 8
+set rmargin 1.0
+
+set pointsize 1.5
+set bar 2.0
+
+# set key at graph 0.95,0.95
+
+set key off
+
+# unset colorbox
+
+set label "\\scalebox{1.2}{`cat triangles.dat | head -n 1 | sed -e 's/#//g'`}" at graph 0.1,0.90
+
+plot "heightmap_plot_0_0.dat" u ($2/100.0):($1/100.0):($3/100.0) with image

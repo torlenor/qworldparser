@@ -1,0 +1,15 @@
+float resolution = 0.005
+Delaunay::triangulate(): Triangulation took 43.233 seconds
+Number of final triangles = 79470
+
+double resolution = 0.005
+Delaunay::triangulate(): Triangulation took 18.296 seconds
+Number of final triangles = 79332
+
+float resolution = 0.0025
+Delaunay::triangulate(): Triangulation took 6732.62 seconds
+Number of final triangles = 2344637
+
+double resolution = 0.0025
+Delaunay::triangulate(): Triangulation took 2989.49 seconds
+Number of final triangles = 320459

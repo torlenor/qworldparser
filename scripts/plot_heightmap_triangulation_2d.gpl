@@ -1,0 +1,47 @@
+plotheight=8.00
+plotwidth=10.00
+set term epslatex size plotwidth cm, plotheight cm dashed color
+
+set output "plot_heightmap_triangulation_2d.tex"
+
+set xrange [46:46.11]
+set yrange [15:15.11]
+
+unset xlabel
+set label 1 "\\scalebox{1.5}{$x$}" at screen 0.94,0.06
+unset ylabel
+set label 2 "\\scalebox{1.2}{$y$}" at screen 0.04, 0.96 rotate by 0
+
+set format x "%.1f"
+set format y "%.1f"
+
+set xtics 0.2
+set ytics 0.2
+
+set mxtics 5
+set mytics 5
+
+set xtics add ("" 1.4)
+set ytics add ("" 1.4)
+
+set xtics nomirror
+
+# set key at graph 0.43,0.95
+
+set bmargin 2.3 
+set tmargin 0.5
+set lmargin 4
+set rmargin 1.0
+
+set pointsize 1.5
+set bar 2.0
+
+# set key at graph 0.95,0.95
+
+set key off
+
+unset colorbox
+
+set label "\\scalebox{1.2}{`cat heightmap_triangles.dat | head -n 1 | sed -e 's/#//g'`}" at graph 0.1,0.90
+
+plot "heightmap_triangles.dat" u 1:2:3 with lines lc palette, "heightmap_points.dat" u 1:2 with points pt 7 ps 0.1
