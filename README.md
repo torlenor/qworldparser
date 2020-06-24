@@ -1,6 +1,8 @@
 # QWorldParser
 
-A parser for SRTM data (unfinished, but it works, if you can get it to compile).
+A parser for SRTM data (unfinished, but it works, if you can get it to compile). It also includes a Delaunay triangularization implementation.
+
+![](docs/example.png)
 
 ## Description
 
@@ -13,5 +15,27 @@ Also I was not able to upload the git history to GitHub due to file size restric
 ## Requirements
 
 - CMake
-- Qt5
-- Visual Studio >=2015
+- Qt5 >= 5.12
+- mingw or g++ with C++11 support
+
+## Build
+
+### Windows
+
+```
+md build
+cd build
+cmake .. -G "MinGW Makefiles"
+mingw32-make
+mingw32-make test
+```
+
+### Linux
+
+```bash
+mkdir build
+cd build
+cmake .. -G "MinGW Makefiles"
+make
+make test
+```
