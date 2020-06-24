@@ -35,7 +35,7 @@ mingw32-make test
 ```bash
 mkdir build
 cd build
-cmake .. -G "MinGW Makefiles"
+cmake ..
 make
 make test
 ```
