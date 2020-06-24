@@ -74,3 +74,23 @@ endif()
 
 add_subdirectory (src)
 add_subdirectory (ut)
+
+ENABLE_TESTING()
+
+IF (NOT TEST_OUTPUT_FORMAT)
+  SET(TEST_OUTPUT_FORMAT "plain")
+  MESSAGE("setting output format of tests to ${TEST_OUTPUT_FORMAT}.. consider using: \"$ cmake -DTEST_OUTPUT_FORMAT=[plain|xml]\"")
+ENDIF (NOT TEST_OUTPUT_FORMAT)
+
+IF (${TEST_OUTPUT_FORMAT} STREQUAL "xml")
+  SET(CATCH_ARGS -r junit -s)
+  SET(CATCH_EXTRA_ARGS "-o commwrap_common_testresult.xml")
+ELSE ()
+  SET(CATCH_ARGS --use-colour yes)
+ENDIF ()
+
+ADD_TEST(
+  NAME tests COMMAND tests ${CATCH_ARGS} ${CATCH_EXTRA_ARGS}
+)
+
+INCLUDE(CTest)
